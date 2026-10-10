@@ -1,0 +1,42 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vp build",
+    "serve": "vp preview",
+    "start": "vp dev",
+    "check-types": "vp build && tsc --noEmit",
+    "generate-pwa-assets": "pwa-assets-generator",
+    "dev:bare": "vp dev",
+    "env:generate": "varlock codegen"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-router": "^1.170.32",
+    "@tic-tac-chor/ui": "workspace:*",
+    "lucide-react": "catalog:",
+    "next-themes": "catalog:",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sonner": "catalog:",
+    "varlock": "catalog:",
+    "vite-plugin-pwa": "^1.3.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@tanstack/react-router-devtools": "^1.167.1",
+    "@tanstack/router-plugin": "^1.168.35",
+    "@tic-tac-chor/config": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "catalog:",
+    "@vite-pwa/assets-generator": "^1.0.2",
+    "@vitejs/plugin-react": "^6.1.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "catalog:",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2"
+  }
+}
