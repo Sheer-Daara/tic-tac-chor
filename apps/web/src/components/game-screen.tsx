@@ -185,6 +185,15 @@ export function GameScreen() {
         {game?.latestTaunt ?? "A new board. A new masterplan."}
       </p>
       <section className="game-results" aria-label="Your results on this device">
+        <Button
+          className="game-new-round"
+          size="lg"
+          disabled={snapshot.status !== "ready"}
+          onClick={() => controller.newGame()}
+        >
+          <RotateCcw data-icon="inline-start" />
+          {completed ? "Play again" : "New game"}
+        </Button>
         <dl className="game-scoreboard">
           <div>
             <dt>Wins</dt>
@@ -199,15 +208,6 @@ export function GameScreen() {
             <dd>{draws.toLocaleString()}</dd>
           </div>
         </dl>
-        <Button
-          className="game-new-round"
-          size="lg"
-          disabled={snapshot.status !== "ready"}
-          onClick={() => controller.newGame()}
-        >
-          <RotateCcw data-icon="inline-start" />
-          {completed ? "Play again" : "New game"}
-        </Button>
       </section>
       <footer className="game-footer">Just a game. All dialogue is authored satire.</footer>
     </main>
