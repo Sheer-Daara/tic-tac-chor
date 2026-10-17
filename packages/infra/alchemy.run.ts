@@ -22,6 +22,7 @@ export default Alchemy.Stack(
       dev: {
         port: 3001,
       },
+      name: "tic-tac-chor"
     });
 
     return {
