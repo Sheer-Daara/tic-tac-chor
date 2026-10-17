@@ -6,6 +6,11 @@ declare const require: (path: string) => number;
 /** Metro's static image references resolve to numeric bundled asset IDs. */
 export type NativeAssetRegistry = AssetRegistry<number>;
 
+export const nativePlayerIcons = {
+  player: require("../images/player-mark.svg"),
+  computer: require("../images/computer-mark.svg"),
+} as const;
+
 /** Literal paths are required so Metro discovers every asset at build time. */
 export const nativeAssets: NativeAssetRegistry = createAssetRegistry(
   require("../images/opponent.webp"),

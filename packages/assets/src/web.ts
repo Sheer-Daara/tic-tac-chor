@@ -1,4 +1,6 @@
 import opponent from "../images/opponent.webp";
+import playerMark from "../images/player-mark.svg";
+import computerMark from "../images/computer-mark.svg";
 import knowingSmirk from "../images/modi-knowing-smirk.webp";
 import playfulWink from "../images/modi-playful-wink.webp";
 import sideEye from "../images/modi-side-eye.webp";
@@ -11,6 +13,8 @@ import type { AssetRegistry, SoundRegistry } from "./index";
 
 /** Vite's explicit image imports resolve to bundled image URLs. */
 export type WebAssetRegistry = AssetRegistry<string>;
+
+export const webPlayerIcons = { player: playerMark, computer: computerMark } as const;
 
 export const webAssets: WebAssetRegistry = createAssetRegistry(opponent, {
   "knowing-smirk": knowingSmirk,

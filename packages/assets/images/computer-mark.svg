@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>Mischievous Narendra Modi caricature</title>
+  <circle cx="64" cy="64" r="61" fill="#fff0d9" stroke="#8c431f" stroke-width="4"/>
+  <path d="M23 119c3-24 20-33 41-33s38 9 41 33" fill="#e77b25" stroke="#693c2c" stroke-width="3" stroke-linejoin="round"/>
+  <path d="m49 93 15 12 15-12-5 30H54Z" fill="#fffaf1"/>
+  <path d="M36 44C27 18 50 9 65 13c23-5 38 12 30 34" fill="#f7f4ea" stroke="#693c2c" stroke-width="3"/>
+  <path d="M39 32c7-11 16-12 24-10m8-1c9 0 15 5 18 10" fill="none" stroke="#cec9bd" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="33" cy="59" rx="7" ry="11" fill="#e9ad7f" stroke="#693c2c" stroke-width="3"/>
+  <ellipse cx="95" cy="59" rx="7" ry="11" fill="#e9ad7f" stroke="#693c2c" stroke-width="3"/>
+  <path d="M36 42c2-7 8-10 13-12 9 8 25 9 39 1l5 14v25c0 22-14 36-29 36S35 91 35 70Z" fill="#f1bd91" stroke="#693c2c" stroke-width="3"/>
+  <path d="M36 64c4 12 10 12 14 10l14 8 15-9c5 2 10-2 14-10l-2 19c-4 17-15 28-27 29-14-2-25-14-28-30Z" fill="#fffaf1" stroke="#693c2c" stroke-width="3" stroke-linejoin="round"/>
+  <path d="m43 44 14 3m16-5 13-5" fill="none" stroke="#fffaf1" stroke-width="6" stroke-linecap="round"/>
+  <g fill="none" stroke="#4a3934" stroke-width="3">
+    <rect x="37" y="48" width="23" height="18" rx="7"/>
+    <rect x="69" y="46" width="23" height="18" rx="7"/>
+    <path d="M60 53q4-3 9 0m-37-2 5 2m55-3 5-3"/>
+  </g>
+  <ellipse cx="50" cy="56" rx="3" ry="4" fill="#3b2926"/>
+  <path d="M75 55q5-6 11-1" fill="none" stroke="#3b2926" stroke-width="3" stroke-linecap="round"/>
+  <path d="m65 56-4 15 8 1" fill="none" stroke="#b47755" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 80q13 17 31-4-2 18-17 18-10-1-14-14" fill="#713b30"/>
+  <path d="M52 81q12 8 25-2l-3 7q-12 6-20-1Z" fill="#fff"/>
+  <path d="M46 80q7-11 18-3 10-9 19-2" fill="none" stroke="#fffaf1" stroke-width="6" stroke-linecap="round"/>
+  <path d="m54 99 10 4 11-6" fill="none" stroke="#d4cec0" stroke-width="2" stroke-linecap="round"/>
+</svg>

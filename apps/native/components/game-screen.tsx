@@ -1,6 +1,5 @@
-import { nativeAssets } from "@tic-tac-chor/assets/native";
+import { nativeAssets, nativePlayerIcons } from "@tic-tac-chor/assets/native";
 import {
-  getActorMark,
   getWinCelebrationKind,
   type CellIndex,
   type ControllerSnapshot,
@@ -62,18 +61,14 @@ function GameBoard({ snapshot }: { snapshot: Extract<ControllerSnapshot, { statu
                 ]}
               >
                 {mark !== null ? (
-                  <Text
+                  <ThemedImage
+                    source={nativePlayerIcons[mark === game.playerMark ? "player" : "computer"]}
+                    contentFit="contain"
                     accessible={false}
                     accessibilityElementsHidden
                     importantForAccessibility="no-hide-descendants"
-                    allowFontScaling={false}
-                    style={[
-                      styles.mark,
-                      mark === game.playerMark ? styles.playerMark : styles.computerMark,
-                    ]}
-                  >
-                    {mark === "X" ? "×" : "○"}
-                  </Text>
+                    style={styles.mark}
+                  />
                 ) : null}
               </Pressable>
             );
@@ -164,12 +159,24 @@ export function GameScreen() {
           </View>
           {game !== null ? (
             <View style={styles.players}>
-              <Text style={styles.playerDescription}>
-                <Text style={styles.playerSymbol}>{getActorMark(game, "player")}</Text> You
-              </Text>
-              <Text style={styles.playerDescription}>
-                <Text style={styles.computerSymbol}>{getActorMark(game, "computer")}</Text> Mudi
-              </Text>
+              <View style={styles.playerIdentity}>
+                <ThemedImage
+                  source={nativePlayerIcons.player}
+                  contentFit="contain"
+                  accessible={false}
+                  style={styles.playerIcon}
+                />
+                <Text style={styles.playerDescription}>You</Text>
+              </View>
+              <View style={styles.playerIdentity}>
+                <ThemedImage
+                  source={nativePlayerIcons.computer}
+                  contentFit="contain"
+                  accessible={false}
+                  style={styles.playerIcon}
+                />
+                <Text style={styles.playerDescription}>Mudi</Text>
+              </View>
             </View>
           ) : null}
         </View>
@@ -286,8 +293,8 @@ const styles = StyleSheet.create((theme, runtime) => ({
     marginLeft: "auto",
   },
   playerDescription: { color: theme.colors.mutedForeground, fontSize: theme.fontSize.xs },
-  playerSymbol: { color: theme.colors.playerMark, fontWeight: "800" },
-  computerSymbol: { color: theme.colors.computerMark, fontWeight: "800" },
+  playerIdentity: { flexDirection: "row", alignItems: "center", gap: 5 },
+  playerIcon: { width: 28, height: 28 },
   play: { gap: 14 },
   boardWrap: { position: "relative" },
   board: {
@@ -306,9 +313,7 @@ const styles = StyleSheet.create((theme, runtime) => ({
   columnDivider: { borderRightWidth: 2, borderRightColor: theme.colors.boardGrid },
   winningCell: { backgroundColor: theme.colors.boardOverlay },
   pressedCell: { backgroundColor: theme.colors.boardOverlay },
-  mark: { fontSize: 76, lineHeight: 86, fontWeight: "700", textAlign: "center" },
-  playerMark: { color: theme.colors.playerMark },
-  computerMark: { color: theme.colors.computerMark },
+  mark: { width: "58%", height: "58%" },
   loadingBoard: { alignItems: "center", justifyContent: "center" },
   loadingMarks: { color: theme.colors.mutedForeground, fontSize: 76 },
   taunt: {

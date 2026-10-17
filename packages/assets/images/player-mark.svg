@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>Generic user placeholder</title>
+  <circle cx="64" cy="64" r="61" fill="#e4f3fb" stroke="#235777" stroke-width="4"/>
+  <circle cx="64" cy="46" r="20" fill="#397b9f"/>
+  <path d="M27 105c0-20 16-34 37-34s37 14 37 34v3a55 55 0 0 1-74 0Z" fill="#397b9f"/>
+</svg>
