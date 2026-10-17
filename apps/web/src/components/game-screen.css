@@ -149,8 +149,8 @@
 }
 .game-players .game-players__mark {
   display: block;
-  width: 13px;
-  height: 13px;
+  width: 28px;
+  height: 28px;
 }
 [data-actor="player"] {
   color: var(--player-mark);

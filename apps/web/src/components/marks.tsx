@@ -1,9 +1,10 @@
+import { webPlayerIcons } from "@tic-tac-chor/assets/web";
+
 export type MarkGlyph = "X" | "O";
 
 /**
- * The game's marks are drawn, not typed: a bowed marker cross and a ring whose
- * return stroke overshoots. The same shapes appear in the logo, so the brand and
- * the board speak one visual language. Color comes from `currentColor`.
+ * Actor icons follow player identity when X/O assignments swap each round.
+ * Unassigned marks retain the drawn X/O shapes used by the brand and loader.
  */
 export function Mark({
   glyph,
@@ -14,6 +15,20 @@ export function Mark({
   className?: string;
   dataActor?: "player" | "computer";
 }) {
+  if (dataActor) {
+    return (
+      <img
+        src={webPlayerIcons[dataActor]}
+        className={className}
+        data-actor={dataActor}
+        width={128}
+        height={128}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+      />
+    );
+  }
   return (
     <svg
       className={className}
