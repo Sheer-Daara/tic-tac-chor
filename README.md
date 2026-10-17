@@ -155,8 +155,15 @@ pnpm run destroy:prod
 pnpm run destroy
 ```
 
-### Optional: deploy from CI
+### Deploy from CI
 
-Set the repository variables `CLOUDFLARE_ACCOUNT_ID` and secret `CLOUDFLARE_API_TOKEN`, then run `pnpm run deploy:prod` from a workflow. The [Alchemy GitHub Action](https://alchemy.run) can also deploy `production` from `main` and per-PR preview stages.
+Pushes to `main` deploy automatically to the `production` stage through [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). You can also start a deploy manually from the workflow's **Run workflow** button.
+
+Configure these repository settings before the first run:
+
+- Repository variable `CLOUDFLARE_ACCOUNT_ID`: your 32-character Cloudflare account ID.
+- Repository secret `CLOUDFLARE_API_TOKEN`: a scoped API token. `pnpm exec alchemy provider cloudflare token` creates one from your local authenticated profile.
+
+The workflow runs `alchemy deploy --stage production --yes` with those environment variables. CI is non-interactive, so `--yes` is required; without it Alchemy prints the plan and exits without applying it. Alchemy stores deployment state in Cloudflare, so no state files or additional secrets are needed.
 
 The agreed product decisions, progress and remaining acceptance checks live in [docs/plan](docs/plan/README.md) and [the checklist](docs/plan/checklist.md). The shared engine now allows a single 70% chance to steal an otherwise drawn round on the computer's final scheduled turn; see [the game engine documentation](packages/game/README.md) for the current policy.
