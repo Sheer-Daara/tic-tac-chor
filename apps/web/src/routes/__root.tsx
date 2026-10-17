@@ -1,11 +1,22 @@
 import { HeadContent, Outlet, createRootRouteWithContext } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { Toaster } from "@tic-tac-chor/ui/components/sonner";
+import { lazy, Suspense } from "react";
 
+import { AppToaster } from "@/components/app-toaster";
+import { GameProvider } from "@/components/game-provider";
 import Header from "@/components/header";
+import { PersistenceNotice } from "@/components/persistence-notice";
+import { PwaUpdate } from "@/components/pwa-update";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import "../index.css";
+
+const RouterDevtools = import.meta.env.DEV
+  ? lazy(() =>
+      import("@tanstack/react-router-devtools").then(({ TanStackRouterDevtools }) => ({
+        default: TanStackRouterDevtools,
+      })),
+    )
+  : null;
 
 export interface RouterAppContext {}
 
@@ -14,11 +25,12 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
   head: () => ({
     meta: [
       {
-        title: "tic-tac-chor",
+        title: "Tic Tac Chor",
       },
       {
         name: "description",
-        content: "tic-tac-chor is a web application",
+        content:
+          "Can you beat the non-biological tic-tac-chor?",
       },
     ],
     links: [
@@ -34,19 +46,27 @@ function RootComponent() {
   return (
     <>
       <HeadContent />
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        disableTransitionOnChange
-        storageKey="vite-ui-theme"
-      >
-        <div className="grid grid-rows-[auto_1fr] h-svh">
-          <Header />
-          <Outlet />
-        </div>
-        <Toaster richColors />
-      </ThemeProvider>
-      <TanStackRouterDevtools position="bottom-left" />
+      <a className="skip-link" href="#game-main">
+        Skip to game
+      </a>
+      <GameProvider>
+        <ThemeProvider>
+          <div className="app-shell">
+            <div>
+              <Header />
+              <PersistenceNotice />
+              <PwaUpdate />
+            </div>
+            <Outlet />
+          </div>
+          <AppToaster />
+        </ThemeProvider>
+      </GameProvider>
+      {RouterDevtools !== null ? (
+        <Suspense fallback={null}>
+          <RouterDevtools position="bottom-left" />
+        </Suspense>
+      ) : null}
     </>
   );
 }

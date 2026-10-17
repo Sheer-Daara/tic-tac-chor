@@ -1,0 +1,379 @@
+/* Type carries the game's two voices: an editorial serif for everything
+   structural, and a rounded display face reserved for the opponent's lines. */
+
+.game-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--game-space-md);
+  width: min(100%, 30rem);
+  margin-inline: auto;
+  padding: 18px 20px 0;
+}
+.game-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-inline-start: -4px;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.game-brand__mark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: 26px;
+}
+.game-brand__mark svg {
+  display: block;
+}
+.game-brand__x {
+  width: 24px;
+  height: 24px;
+  color: var(--player-mark);
+}
+.game-brand__o {
+  width: 19px;
+  height: 19px;
+  margin-inline-start: -6px;
+  color: var(--computer-mark);
+}
+.game-brand__word {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variation-settings: var(--game-display-variation);
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+.game-brand strong,
+.game-brand__period {
+  color: var(--primary);
+}
+.game-brand strong {
+  font-weight: 800;
+}
+.game-brand:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.game-screen {
+  width: min(100%, 30rem);
+  margin-inline: auto;
+  padding: 6px 20px 40px;
+}
+
+/* Opponent identity, turn status and mark legend share one compact row. */
+.game-opponent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+.game-opponent__portrait {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--muted);
+  border: 2px solid var(--border);
+}
+.game-opponent__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+}
+.game-opponent__meta {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 3px;
+}
+.game-opponent__name {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  font-variation-settings: var(--game-text-variation);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.game-turn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-variation-settings: var(--game-text-variation);
+  line-height: 1.2;
+}
+.game-turn__dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--player-mark);
+}
+.game-turn__dot[data-thinking] {
+  background: var(--computer-mark);
+  animation: game-thinking 1s ease-in-out infinite;
+}
+.game-players {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 14px;
+  margin-left: auto;
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-variation-settings: var(--game-text-variation);
+}
+.game-players > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.game-players .game-players__mark {
+  display: block;
+  width: 13px;
+  height: 13px;
+}
+[data-actor="player"] {
+  color: var(--player-mark);
+}
+[data-actor="computer"] {
+  color: var(--computer-mark);
+}
+
+.game-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--game-radius-xl);
+  border: 2px solid var(--board-grid);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow:
+    0 6px 0 color-mix(in srgb, var(--board-grid) 18%, transparent),
+    0 18px 32px color-mix(in srgb, var(--foreground) 7%, transparent);
+}
+.game-board-wrap {
+  position: relative;
+}
+.game-board__cells {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  height: 100%;
+}
+.game-cell {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--game-motion-press) ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.game-cell:not(:nth-child(3n)) {
+  border-right: 2px solid var(--board-grid);
+}
+.game-cell:nth-child(-n + 6) {
+  border-bottom: 2px solid var(--board-grid);
+}
+.game-cell[aria-disabled="true"] {
+  cursor: default;
+}
+.game-cell:not([aria-disabled="true"]):hover {
+  background: color-mix(in srgb, var(--player-mark) 8%, transparent);
+}
+.game-cell:not([aria-disabled="true"]):active {
+  background: color-mix(in srgb, var(--player-mark) 14%, transparent);
+}
+.game-cell:focus-visible {
+  outline: 4px solid var(--ring);
+  outline-offset: -6px;
+  border-radius: 8px;
+}
+.game-cell[data-winning] {
+  background: color-mix(in srgb, var(--computer-mark) 10%, transparent);
+}
+.game-cell[data-winning][data-actor="player"] {
+  background: color-mix(in srgb, var(--player-mark) 10%, transparent);
+}
+.game-mark {
+  display: block;
+  width: 58%;
+  height: 58%;
+  animation: game-mark-in 180ms ease-out;
+}
+.game-board--loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  color: var(--muted-foreground);
+}
+.game-board--loading .game-mark {
+  width: 22%;
+  height: 22%;
+  animation: none;
+}
+
+/* The opponent's line, read as one short speech bubble under the board. */
+.game-taunt {
+  --taunt-bg: color-mix(in srgb, var(--computer-mark) 8%, var(--surface));
+  --taunt-line: color-mix(in srgb, var(--computer-mark) 26%, var(--border));
+  position: relative;
+  margin: var(--game-space-lg) 0 0;
+  padding: 14px 17px 15px;
+  background: var(--taunt-bg);
+  border: 1px solid var(--taunt-line);
+  border-radius: var(--game-radius-lg);
+  color: var(--foreground);
+  font-family: var(--font-fun);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.002em;
+  overflow-wrap: anywhere;
+}
+.game-taunt::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 24px;
+  width: 12px;
+  height: 12px;
+  background: var(--taunt-bg);
+  border-top: 1px solid var(--taunt-line);
+  border-left: 1px solid var(--taunt-line);
+  border-top-left-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.game-results {
+  margin-top: var(--game-space-lg);
+}
+.game-scoreboard {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--game-space-md);
+  margin: 0 0 var(--game-space-lg);
+  padding-top: var(--game-space-md);
+  border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+.game-scoreboard > div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.game-scoreboard dt {
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-variation-settings: var(--game-text-variation);
+}
+.game-scoreboard dd {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 40,
+    "SOFT" 24,
+    "WONK" 1;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.game-new-round {
+  width: 100%;
+  min-height: 52px;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-variation-settings: var(--game-text-variation);
+  letter-spacing: 0.005em;
+  border-radius: var(--game-radius-md);
+}
+.game-footer {
+  margin-top: var(--game-space-xl);
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-variation-settings: var(--game-text-variation);
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@keyframes game-thinking {
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes game-mark-in {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .game-header {
+    padding-top: 24px;
+    padding-inline: 24px;
+  }
+  .game-screen {
+    padding-top: 8px;
+    padding-inline: 24px;
+  }
+}
+@media (max-width: 340px) {
+  .game-header {
+    padding-inline: 16px;
+  }
+  .game-screen {
+    padding-inline: 16px;
+  }
+  .game-opponent__portrait {
+    width: 42px;
+    height: 42px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-turn__dot[data-thinking],
+  .game-mark {
+    animation: none;
+  }
+  .game-cell {
+    transition: none;
+  }
+}

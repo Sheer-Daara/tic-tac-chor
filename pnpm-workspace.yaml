@@ -1,0 +1,27 @@
+packages:
+  - apps/*
+  - packages/*
+
+allowBuilds:
+  workerd: true
+
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.1
+
+catalog:
+  "@types/node": ^26.4.1
+  "@types/react-dom": ^19.2.7
+  lucide-react: ^1.41.0
+  next-themes: ^0.4.6
+  sonner: ^2.0.8
+  tailwindcss: ^4.3.3
+  varlock: 1.18.0
+  zod: ^4.5.4
+
+minimumReleaseAgeExclude:
+  - "@expo/cli@58.1.11"
+  - "@expo/schema-utils@58.0.2"
+  - babel-preset-expo@58.0.17
+  - expo-modules-core@58.0.22
+  - expo-modules-jsi@58.0.15
+  - expo@58.0.14

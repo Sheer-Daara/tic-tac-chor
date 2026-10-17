@@ -1,1 +1,120 @@
 @import "@tic-tac-chor/ui/globals.css";
+@import "@tic-tac-chor/design/theme.css";
+
+/* Two voices, Latin subset only: the interface and the Hinglish dialogue are
+   both written in Latin script, so the other subsets are dead weight. */
+@font-face {
+  font-family: "Fraunces Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("@fontsource-variable/fraunces/files/fraunces-latin-full-normal.woff2")
+    format("woff2-variations");
+}
+@font-face {
+  font-family: "Baloo 2 Variable";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+@theme inline {
+  --font-sans: var(--game-font-family);
+  --font-fun: var(--game-font-fun-family);
+}
+
+/* Fraunces exposes optical size, softness and wonk as axes: the wordmark and
+   display figures use them, interface text keeps them neutral. */
+:root {
+  --game-display-variation: "opsz" 60, "SOFT" 28, "WONK" 1;
+  --game-text-variation: "opsz" 14, "SOFT" 0, "WONK" 0;
+}
+
+html {
+  min-width: 280px;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+  overflow-wrap: anywhere;
+}
+
+.app-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.app-shell > main {
+  flex: 1;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -10rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  color: var(--foreground);
+  border: 2px solid var(--ring);
+}
+
+.skip-link:focus {
+  top: max(0.5rem, env(safe-area-inset-top, 0px));
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.pwa-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 60rem;
+  margin: 0 auto 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+}
+
+.pwa-notice > div:first-child {
+  flex: 1 1 16rem;
+}
+
+.settings-panel {
+  top: calc(50% + (env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) / 2);
+  left: calc(50% + (env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)) / 2);
+  max-height: calc(
+    100dvh - 2rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
+  );
+  max-width: min(
+    26rem,
+    calc(100% - 2rem - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px))
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

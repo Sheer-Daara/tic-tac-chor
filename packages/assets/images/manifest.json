@@ -1,0 +1,56 @@
+[
+  {
+    "id": "modi",
+    "file": "opponent.webp",
+    "width": 512,
+    "height": 512,
+    "hasAlpha": true,
+    "bytes": 53420,
+    "sha256": "7a45462fdf48dfc7e584f797dd16a83f9ff3b8c7d05735316bb92b7d7046de5d"
+  },
+  {
+    "id": "knowing-smirk",
+    "file": "modi-knowing-smirk.webp",
+    "width": 768,
+    "height": 768,
+    "hasAlpha": false,
+    "bytes": 28134,
+    "sha256": "3c5070eea430c971bae119e6bc9cafd825815e840349d98af0b3d0711a194d51"
+  },
+  {
+    "id": "playful-wink",
+    "file": "modi-playful-wink.webp",
+    "width": 768,
+    "height": 768,
+    "hasAlpha": false,
+    "bytes": 29966,
+    "sha256": "8426cb869770af83c4c0059c66ba29bc0fd5a82d6ff0b4829d8b0b961d19c3a3"
+  },
+  {
+    "id": "side-eye",
+    "file": "modi-side-eye.webp",
+    "width": 768,
+    "height": 768,
+    "hasAlpha": false,
+    "bytes": 26976,
+    "sha256": "17c1d43662d5f23417fc2d51c317f7ca62f0e3f6cc3b33ec8ec843fd62bb3065"
+  },
+  {
+    "id": "secret-grin",
+    "file": "modi-secret-grin.webp",
+    "width": 768,
+    "height": 768,
+    "hasAlpha": false,
+    "bytes": 30746,
+    "sha256": "3816b73843a241e21386622c4acc6e4ae968a2fceb8889afd016c5f7b6f10307"
+  },
+  {
+    "id": "scheming-chin",
+    "file": "modi-scheming-chin.webp",
+    "width": 768,
+    "height": 768,
+    "hasAlpha": false,
+    "bytes": 29908,
+    "sha256": "52b82bd35b65d18a8bb16304dce0fc6ed97db98c94a07f9a981ebe6d62692409"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "name": "@tic-tac-chor/assets",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./web": "./src/web.ts",
+    "./native": "./src/native.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit && node scripts/check-assets.mjs && node scripts/check-sounds.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
+    "check:sounds": "node scripts/check-sounds.mjs",
+    "generate:sounds": "node scripts/generate-sounds.mjs"
+  },
+  "devDependencies": {
+    "@tic-tac-chor/config": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}

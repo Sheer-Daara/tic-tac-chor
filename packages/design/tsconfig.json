@@ -1,0 +1,10 @@
+{
+  "extends": "@tic-tac-chor/config/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "types": [],
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "src/**/*.test.ts"]
+}

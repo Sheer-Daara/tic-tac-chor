@@ -1,118 +1,162 @@
-# tic-tac-chor
+# Tic-Tac-Chor
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Router, and more.
+A mobile-first tic-tac-toe game for the web and Expo. Play against a Narendra Modi editorial caricature, with sample Hinglish banter and five minimal, mischievous Modi caricature backdrops that change with each new game. Dialogue is authored satire.
 
-## Features
+The opener is chosen randomly and plays X. The computer uses legal minimax moves and thinks for about 1.2 seconds. New game abandons the current round without counting a result; completed rounds count once. Settings provides Light, Dark and System appearance plus confirmed statistics reset.
 
-- **TypeScript** - For type safety and improved developer experience
-- **TanStack Router** - File-based routing with full type safety
-- **React Native** - Build mobile apps using React
-- **Expo** - Tools for React Native development
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **Shared UI package** - shadcn/ui primitives live in `packages/ui`
-- **PWA** - Progressive Web App support
-- **Vite+** - Unified Vite toolchain, workspace task runner, linting, and formatting
+## Development
 
-## Getting Started
-
-First, install the dependencies:
+Use the pnpm version pinned in `package.json` and Node 24 or newer. Install from the workspace root:
 
 ```bash
-bun install
+pnpm install
+pnpm run dev:web
 ```
 
-Then, run the development server:
+Open [localhost:3001](http://localhost:3001). The web app uses React 19, TanStack Router, Tailwind 4, shadcn/Base UI and Vite+. `pnpm run dev` also starts the infrastructure development workflow; `dev:web` runs the frontend directly.
+
+### iOS and Android
+
+The Expo SDK 57 app retains Unistyles and requires a **development build**. Expo Go does not contain the [Unistyles native module](https://unistyl.es/v3/start/getting-started/).
+
+With full Xcode and an iOS simulator installed, or Android Studio/SDK, Java and an emulator/device installed:
 
 ```bash
-bun run dev
+pnpm --filter native ios
+# or
+pnpm --filter native android
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-Use the Expo Go app to run the mobile application.
-
-## UI Customization
-
-React web apps in this stack share shadcn/ui primitives through `packages/ui`.
-
-- Change design tokens and global styles in `packages/ui/src/styles/globals.css`
-- Update shared primitives in `packages/ui/src/components/*`
-- Adjust shadcn aliases or style config in `packages/ui/components.json` and `apps/web/components.json`
-
-### Add more shared components
-
-Run this from the project root to add more primitives to the shared UI package:
+These commands generate the ignored native projects, compile and install the development client, and launch Metro. For later JavaScript-only changes, start Metro with:
 
 ```bash
-npx shadcn@latest add accordion dialog popover sheet table -c packages/ui
+pnpm --filter native dev
 ```
 
-Import shared components like this:
+Rebuild after native dependencies or app configuration change. The game and Settings share the same controller across routes, so opening or dismissing Settings preserves the round. Native artwork and storage are bundled/private; gameplay needs no server.
 
-```tsx
-import { Button } from "@tic-tac-chor/ui/components/button";
-```
+EAS development profiles live in `apps/native/eas.json`. Optional cloud development builds require your own Expo login/project and platform signing setup; this repository is not linked to an EAS project. Run EAS commands from `apps/native`. Deployment and store submission are outside the implementation plan.
 
-### Add app-specific blocks
-
-If you want to add app-specific blocks instead of shared primitives, run the shadcn CLI from `apps/web`.
-
-## Environment Configuration
-
-Each app owns its environment schema in `.env.schema`. Varlock generates `src/env.ts` during installation; run `bun run env:generate` after changing a schema. Commit schemas, and keep secrets in ignored env files or your deployment platform.
-
-Import the generated `ENV` accessor in application code. Shared database and auth packages receive configuration or initialized clients from the application. See [Varlock's monorepo guide](https://varlock.dev/guides/monorepos/).
-
-For Cloudflare, Alchemy loads and validates deployment inputs with `varlock/auto-load` in its Node/Bun deployment process. Worker code reads native bindings; web clients use the framework's public env API through `src/env.public.ts` where needed. Alchemy supplies resource URLs and managed database credentials. In-Worker Varlock protections are deferred until an official Alchemy integration is available; see [the non-Wrangler deployment guidance](https://varlock.dev/integrations/cloudflare/#non-wrangler-deploy-tools-alchemy-sst-pulumi).
-
-Bun's automatic env loading is disabled in `bunfig.toml`; the framework integration or server bootstrap loads Varlock. Node deployments must include Varlock and its dependencies alongside the app schema.
-
-Run standalone Node/Bun tools that use Varlock from the owning app directory so they load that app's schema and env files. `env:generate` only generates TypeScript files; it does not initialize environment values in a subsequent command.
-
-## Deployment
-
-### Alchemy
-
-- Target: web on Cloudflare
-- Configure provider accounts: `cd packages/infra && bunx alchemy profile edit`
-- Dev: bun run dev
-- Deploy: bun run deploy
-- Destroy: bun run destroy
-
-`alchemy profile edit` stores the selected Axiom, Cloudflare, Neon, PlanetScale, and/or Prisma provider profiles under `~/.alchemy`; no provider-specific setup command is required by this scaffold.
-
-Deploys are staged and default to a personal `dev_<username>` stage. For production, run the deploy with an explicit stage from `packages/infra`:
+### Checks and production preview
 
 ```bash
-cd packages/infra && bunx alchemy deploy --stage production
+pnpm run check
+pnpm --filter @tic-tac-chor/game --filter @tic-tac-chor/design --filter web --filter native test
+pnpm --filter web build
+pnpm --filter web serve
+pnpm --filter native bundle:ios
+pnpm --filter native bundle:android
+pnpm --filter native bundle:check
 ```
 
-## Git Hooks and Formatting
+`check` runs workspace formatting/lint, TypeScript, design CSS provenance, artwork integrity checks and the web/PWA build. Native bundle checks and remaining live acceptance procedures are documented in [the verification guide](docs/plan/verification.md). Unit tests and bundles do not replace simulator/device checks.
 
-- Optional native Vite+ hooks: `bun run hooks:setup`
-- Docs: [Vite+ commit hooks](https://viteplus.dev/guide/commit-hooks)
-- Run checks: `bun run check`
+The production web preview includes the service worker. After its offline-ready notice, install through the browser's app menu or Add to Home Screen. Production hosting needs HTTPS. Updates offer Reload or Not now; Reload waits for local saves and starts a fresh round. Another tab accepting an update does not reload your active game.
 
-## Project Structure
+## Shared packages
 
+- `packages/game`: rules, exhaustive minimax opponent, taunts, carousel, validated snapshot and serialized controller. `/react` exports the React binding; `/presentation` exports shared turn text and descriptive board labels. Platform storage, timers and the optional move-cue player are injected.
+- `packages/design`: light/dark colors, geometry, typography and motion. Web CSS is generated from the same tokens consumed by native Unistyles.
+- `packages/assets`: artwork, procedurally generated move sounds and ordered metadata, with explicit Vite imports through `/web` and literal Metro references through `/native`.
+- `packages/ui`: shared web shadcn/Base UI primitives.
+- `packages/config`: shared TypeScript configuration.
+- `packages/infra`: existing Alchemy/Cloudflare web infrastructure.
+
+The apps use platform UI components with the same board/opponent/message/score composition. Native module dependencies belong in `apps/native`; keep web React dependency resolution separate from native's pinned React version.
+
+## Local data
+
+There are no accounts, database, cloud sync or individual game history. Each browser/device keeps aggregate wins/losses/draws, theme preference, move-sound preference and the last background position in one validated version-1 JSON snapshot.
+
+Web uses `localStorage` key `tic-tac-chor:snapshot:v1`. Native uses `tic-tac-chor/snapshot-v1.json` in Expo's private document directory, staging writes and retaining one valid backup. Reload/relaunch advances to a fresh round and keeps results/preferences. Reset statistics clears only totals. Invalid snapshots recover to defaults; storage failures show a Retry save notice while play continues. Clearing browser/app data removes local results; devices do not share data.
+
+## Change personality and artwork
+
+Edit `sampleTaunts` in `packages/game/src/taunts.ts`. The opening, player-move, computer-move, computer-win and draw arrays are shared by both apps. Keep a nonempty fallback; empty categories remain supported. The controller avoids immediately repeating the previous message.
+
+Background order comes from `backgroundMetadata` in `packages/assets/src/index.ts`. Reorder this array to change both carousels. To replace a background, keep its filename/dimensions and update the image integrity manifest. To add/remove artwork, update both explicit platform registries and manifest entries; the controller derives the carousel count from shared metadata. See [artwork maintenance](packages/assets/README.md) for dimensions, budgets and provenance. Changing an existing saved carousel's order/count changes how its stored index maps to the artwork.
+
+## Change move sounds
+
+The two cues are synthesised from scratch, so they carry no third-party licensing: your move rises (E5 → B5) and the computer's falls (B3 → F#3). Edit the envelopes, notes and timbres in `packages/assets/scripts/sounds.mjs`, then regenerate and verify the checked-in WAVs:
+
+```bash
+pnpm --filter @tic-tac-chor/assets generate:sounds
+pnpm --filter @tic-tac-chor/assets check:sounds
 ```
-tic-tac-chor/
-├── apps/
-│   ├── web/         # Frontend application (React + TanStack Router)
-│   ├── native/      # Mobile application (React Native, Expo)
-├── packages/
-│   ├── ui/          # Shared shadcn/ui components and styles
+
+The shared controller plays a cue for every accepted move and skips it while sound is off; the Settings panel persists that choice. Web playback is best-effort through preloaded `HTMLAudioElement`s, and native playback uses one reusable `expo-audio` player per actor. Both are adapters injected into `createGameController`, so the game core stays platform-free. Adding or renaming sounds also means updating both platform registries in `packages/assets/src`.
+
+Change visual tokens in `packages/design/src/tokens.ts`, then regenerate and verify:
+
+```bash
+pnpm --filter @tic-tac-chor/design generate:css
+pnpm --filter @tic-tac-chor/design check-types
+pnpm --filter @tic-tac-chor/design test
 ```
 
-## Available Scripts
+Use [shared design guidance](packages/design/README.md) to preserve contrast and reduced-motion handling. Two type voices come from the tokens: **Fraunces** (`fontFamily`) for everything structural and **Baloo 2** (`funFontFamily`) for the opponent's dialogue and win celebrations. Web loads both from the `@fontsource-variable` npm packages in `apps/web/src/index.css`; the Latin subsets are declared by hand so the other subsets are not precached. The game's X and O are drawn SVG paths in `apps/web/src/components/marks.tsx` and reused by the logo, the board and the scoreboard legend. Add web primitives through shadcn:
 
-- `bun run dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun run dev:web`: Start only the web application
-- `bun run check-types`: Check TypeScript types across all apps
-- `bun run dev:native`: Start the React Native/Expo development server
-- `bun run check`: Run Vite+ format/lint checks and workspace TypeScript checks
-- `bun run lint`: Run Vite+ lint checks
-- `bun run format`: Run Vite+ formatting
-- `bun run staged`: Run Vite+ checks against staged files
-- `bun run hooks:setup`: Install Vite+ native Git hooks with `vp config`
-- `cd apps/web && bun run generate-pwa-assets`: Generate PWA assets
+```bash
+pnpm dlx shadcn@latest add <component> -c packages/ui
+```
+
+## Environment
+
+Each app owns `.env.schema`. Varlock generates typed accessors during installation; run `pnpm run env:generate` after schema changes. Keep secrets in ignored env files. The game has no API or database dependency.
+
+## Deploy to Cloudflare Workers
+
+The web app deploys as a Cloudflare Worker with static assets. The infrastructure is declared in `packages/infra/alchemy.run.ts` with [Alchemy](https://alchemy.run) (`Cloudflare.Website.Vite`), which runs the Vite build and uploads the result. There is no `wrangler.toml` to edit; Alchemy manages the Worker.
+
+### One-time Cloudflare setup
+
+Run this in a **real terminal** (Terminal.app or iTerm), not from inside pi or another agent session:
+
+```bash
+pnpm run auth
+```
+
+That runs `alchemy profile edit --add Cloudflare`. Choose **OAuth** → **All Scopes**, then finish the browser login and pick your account. Credentials are stored in the `default` profile under `~/.alchemy` and refresh automatically.
+
+> **Agent sessions block Alchemy's TUI.** Alchemy treats a process as non-interactive when `AI_AGENT` is set or `PATH` contains `.pi/agent` (plus various other agent/CI markers), and then fails with `failed to configure credentials` / `Cannot run selection without an interactive terminal`. The `auth`, `deploy` and `destroy` scripts set `ALCHEMY_TUI=1` to override that detection; it is a no-op when there is no real TTY. If you invoke `alchemy` directly, prefix it yourself: `ALCHEMY_TUI=1 pnpm exec alchemy profile edit --add Cloudflare`.
+
+**No browser, or CI?** Skip the profile entirely and pass credentials through the environment. Both `deploy` and the deploy-time state-store bootstrap use them:
+
+```bash
+export CLOUDFLARE_ACCOUNT_ID=<32-hex account id>
+export CLOUDFLARE_API_TOKEN=<scoped api token>
+pnpm run deploy:prod
+```
+
+`pnpm exec alchemy provider cloudflare token` creates a scoped token, and `pnpm exec alchemy provider check-env` confirms the variables are seen. To persist stored credentials without the TUI instead:
+
+```bash
+cd packages/infra
+pnpm exec alchemy profile edit --add Cloudflare --method stored \
+  --set accountId=<32-hex account id> --set apiToken=env:CLOUDFLARE_API_TOKEN
+```
+
+No secrets are required at runtime and no `.env` is needed. Alchemy keeps deployment state in a Cloudflare-hosted state store it bootstraps automatically on the first deploy.
+
+### Deploy
+
+```bash
+pnpm run deploy:prod   # deploy to the explicit `production` stage
+pnpm run deploy        # deploy to the live_$USER stage (default)
+```
+
+Alchemy prints the deployed `web` URL (also recorded in `packages/infra/.alchemy/state/tic-tac-chor/<stage>/__stack_output__.json`) and serves it on `https://<worker>.<account-subdomain>.workers.dev`. Attach a custom domain by adding a `routes` entry to the `Cloudflare.Website.Vite` call in `packages/infra/alchemy.run.ts`.
+
+To tear the stack down again:
+
+```bash
+pnpm run destroy:prod
+pnpm run destroy
+```
+
+### Optional: deploy from CI
+
+Set the repository variables `CLOUDFLARE_ACCOUNT_ID` and secret `CLOUDFLARE_API_TOKEN`, then run `pnpm run deploy:prod` from a workflow. The [Alchemy GitHub Action](https://alchemy.run) can also deploy `production` from `main` and per-PR preview stages.
+
+The agreed product decisions, progress and remaining acceptance checks live in [docs/plan](docs/plan/README.md) and [the checklist](docs/plan/checklist.md). The shared engine now allows a single 70% chance to steal an otherwise drawn round on the computer's final scheduled turn; see [the game engine documentation](packages/game/README.md) for the current policy.

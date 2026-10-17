@@ -1,0 +1,52 @@
+{
+  "tool": "Built-in imagegen",
+  "generatedOn": "2026-10-17",
+  "entries": [
+    {
+      "id": "modi",
+      "file": "opponent.webp",
+      "prompt": "Use case: illustration-story\nAsset type: bundled mobile game artwork\nA recognizable editorial caricature of Narendra Modi for a playful tic-tac-toe game opponent avatar. White swept short hair, full neatly trimmed white beard and moustache, rimless glasses, warm brown skin, cream kurta with muted saffron sleeveless vest. Smug amused raised eyebrow and small knowing smile, arms folded. Single waist-up figure centered, isolated with genuine transparent background, generous clean space around head. Hand-drawn bold ink contours, softly textured gouache, rounded whimsical proportions, polished editorial newspaper illustration. No text, logos, badges, watermarks or extra objects. Square composition.",
+      "transparentBackground": true
+    },
+    {
+      "id": "knowing-smirk",
+      "file": "modi-knowing-smirk.webp",
+      "prompt": "Use case: illustration-story. Asset type: square tic-tac-toe board backdrop, one artwork from a cohesive five-image series. Primary request: a minimal recognizable caricature of Narendra Modi with a look of mischief, not too detailed. A knowing closed-mouth sideways smirk, one eyebrow raised, facing almost forward. Style: spare editorial cartoon, bold smooth dark charcoal outlines, large simple flat shapes, extremely few facial lines, no realistic texture, no detailed shading. Recognizable short white hair, full white beard, rimless glasses, warm tan skin, plain simple kurta and vest. Composition: single centered head-and-shoulders bust, entire head and shoulders comfortably within frame with generous quiet margin. Head occupies about half the image height. Muted warm ivory background, restrained warm neutral clothing. Friendly satirical mischief. No scenery, no props except the specified hand if any, no words, no watermark, no board or grid, no decorative details. Opaque background.",
+      "transparentBackground": false,
+      "originalPath": "/Users/ronnie/.codex/generated_images/01a148c2-88ae-75d3-8b8c-8f5a8bc04286/exec-6dd5aca0-b3f7-4cbe-baf2-59605988d2c0.png",
+      "generatedOn": "2026-10-17"
+    },
+    {
+      "id": "playful-wink",
+      "file": "modi-playful-wink.webp",
+      "prompt": "Use case: illustration-story. Asset type: square tic-tac-toe board backdrop, one artwork from a cohesive five-image series. Primary request: a minimal recognizable caricature of Narendra Modi with a look of mischief, not too detailed. A playful wink and small lopsided grin, head tilted slightly to the left. Style: spare editorial cartoon, bold smooth dark charcoal outlines, large simple flat shapes, extremely few facial lines, no realistic texture, no detailed shading. Recognizable short white hair, full white beard, rimless glasses, warm tan skin, plain simple kurta and vest. Composition: single centered head-and-shoulders bust, entire head and shoulders comfortably within frame with generous quiet margin. Head occupies about half the image height. Muted warm ivory background, restrained warm neutral clothing. Friendly satirical mischief. No scenery, no props except the specified hand if any, no words, no watermark, no board or grid, no decorative details. Opaque background.",
+      "transparentBackground": false,
+      "originalPath": "/Users/ronnie/.codex/generated_images/01a148c2-88ae-75d3-8b8c-8f5a8bc04286/exec-74eca50c-967a-41de-a96c-f55ea92dee81.png",
+      "generatedOn": "2026-10-17"
+    },
+    {
+      "id": "side-eye",
+      "file": "modi-side-eye.webp",
+      "prompt": "Use case: illustration-story. Asset type: square tic-tac-toe board backdrop, one artwork from a cohesive five-image series. Primary request: a minimal recognizable caricature of Narendra Modi with a look of mischief, not too detailed. A mischievous sideways glance to the right, both eyebrows slightly arched, tiny sly smile. Style: spare editorial cartoon, bold smooth dark charcoal outlines, large simple flat shapes, extremely few facial lines, no realistic texture, no detailed shading. Recognizable short white hair, full white beard, rimless glasses, warm tan skin, plain simple kurta and vest. Composition: single centered head-and-shoulders bust, entire head and shoulders comfortably within frame with generous quiet margin. Head occupies about half the image height. Muted warm ivory background, restrained warm neutral clothing. Friendly satirical mischief. No scenery, no props except the specified hand if any, no words, no watermark, no board or grid, no decorative details. Opaque background.",
+      "transparentBackground": false,
+      "originalPath": "/Users/ronnie/.codex/generated_images/01a148c2-88ae-75d3-8b8c-8f5a8bc04286/exec-b8e50013-d884-46b2-88cf-8e430d07391a.png",
+      "generatedOn": "2026-10-17"
+    },
+    {
+      "id": "secret-grin",
+      "file": "modi-secret-grin.webp",
+      "prompt": "Use case: illustration-story. Asset type: square tic-tac-toe board backdrop, one artwork from a cohesive five-image series. Primary request: a minimal recognizable caricature of Narendra Modi with a look of mischief, not too detailed. A cheeky broad closed-mouth grin, chin slightly tucked, eyes looking upward under expressive eyebrows. Style: spare editorial cartoon, bold smooth dark charcoal outlines, large simple flat shapes, extremely few facial lines, no realistic texture, no detailed shading. Recognizable short white hair, full white beard, rimless glasses, warm tan skin, plain simple kurta and vest. Composition: single centered head-and-shoulders bust, entire head and shoulders comfortably within frame with generous quiet margin. Head occupies about half the image height. Muted warm ivory background, restrained warm neutral clothing. Friendly satirical mischief. No scenery, no props except the specified hand if any, no words, no watermark, no board or grid, no decorative details. Opaque background.",
+      "transparentBackground": false,
+      "originalPath": "/Users/ronnie/.codex/generated_images/01a148c2-88ae-75d3-8b8c-8f5a8bc04286/exec-2d7f36c6-2ce5-4e1d-877b-39a7692a4ab2.png",
+      "generatedOn": "2026-10-17"
+    },
+    {
+      "id": "scheming-chin",
+      "file": "modi-scheming-chin.webp",
+      "prompt": "Use case: illustration-story. Asset type: square tic-tac-toe board backdrop, one artwork from a cohesive five-image series. Primary request: a minimal recognizable caricature of Narendra Modi with a look of mischief, not too detailed. A conspiratorial smile with one simplified hand gently touching the chin, head turned slightly three-quarter left. Style: spare editorial cartoon, bold smooth dark charcoal outlines, large simple flat shapes, extremely few facial lines, no realistic texture, no detailed shading. Recognizable short white hair, full white beard, rimless glasses, warm tan skin, plain simple kurta and vest. Composition: single centered head-and-shoulders bust, entire head and shoulders comfortably within frame with generous quiet margin. Head occupies about half the image height. Muted warm ivory background, restrained warm neutral clothing. Friendly satirical mischief. No scenery, no props except the specified hand if any, no words, no watermark, no board or grid, no decorative details. Opaque background.",
+      "transparentBackground": false,
+      "originalPath": "/Users/ronnie/.codex/generated_images/01a148c2-88ae-75d3-8b8c-8f5a8bc04286/exec-1a8098f4-58e7-4bc3-ab7e-31af1596facb.png",
+      "generatedOn": "2026-10-17"
+    }
+  ]
+}

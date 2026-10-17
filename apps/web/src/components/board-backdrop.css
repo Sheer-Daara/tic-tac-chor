@@ -1,0 +1,31 @@
+.board-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--surface);
+  pointer-events: none;
+}
+
+.board-backdrop__image,
+.board-backdrop__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.board-backdrop__image {
+  object-fit: cover;
+  transition: opacity var(--game-motion-background-crossfade) ease-in-out;
+}
+
+.board-backdrop__overlay {
+  background: var(--board-overlay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .board-backdrop__image {
+    transition: none;
+  }
+}
