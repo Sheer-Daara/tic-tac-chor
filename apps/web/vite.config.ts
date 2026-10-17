@@ -19,16 +19,27 @@ export default defineConfig({
     }),
     react(),
     VitePWA({
-      registerType: "autoUpdate",
-      workbox: { globPatterns: ["**/*.{js,css,html,png,svg,ico}"] },
-      manifest: {
-        name: "tic-tac-chor",
-        short_name: "tic-tac-chor",
-        description: "tic-tac-chor - PWA Application",
-        theme_color: "#0c0c0c",
+      registerType: "prompt",
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,png,webp,svg,ico,wav,woff,woff2,ttf,otf}"],
+        navigateFallback: "index.html",
+        cleanupOutdatedCaches: true,
       },
-      pwaAssets: { disabled: false, config: true },
-      devOptions: { enabled: true },
+      manifest: {
+        id: "/",
+        name: "Tic Tac Chor",
+        short_name: "Tic Tac Chor",
+        description:
+          "A playful tic-tac-toe showdown with changing illustrated backdrops. Play offline and keep your scores on this device.",
+        start_url: "/",
+        scope: "/",
+        display: "standalone",
+        lang: "en",
+        categories: ["games", "entertainment"],
+        theme_color: "#fff8ed",
+        background_color: "#fff8ed",
+      },
+      pwaAssets: { disabled: false, config: true, injectThemeColor: false },
     }),
   ],
 });

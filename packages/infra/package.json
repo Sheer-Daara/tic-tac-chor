@@ -5,17 +5,19 @@
   "scripts": {
     "check-types": "tsc --noEmit",
     "dev": "alchemy dev",
-    "deploy": "alchemy deploy",
-    "destroy": "alchemy destroy"
+    "auth": "ALCHEMY_TUI=1 alchemy profile edit --add Cloudflare",
+    "deploy": "ALCHEMY_TUI=1 alchemy deploy",
+    "deploy:prod": "ALCHEMY_TUI=1 alchemy deploy --stage production",
+    "destroy": "ALCHEMY_TUI=1 alchemy destroy",
+    "destroy:prod": "ALCHEMY_TUI=1 alchemy destroy --stage production"
   },
   "dependencies": {
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@effect/platform-bun": "4.0.0",
     "@effect/platform-node": "4.0.0",
     "@tic-tac-chor/config": "workspace:*",
-    "alchemy": "2.0.0-beta.80",
+    "alchemy": "2.0.0-beta.83",
     "effect": "4.0.0",
     "typescript": "^6.0.3",
     "varlock": "catalog:"

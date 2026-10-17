@@ -1,27 +1,22 @@
 import { Link } from "@tanstack/react-router";
-
-import { ModeToggle } from "./mode-toggle";
+import { Settings } from "@/components/settings";
+import { Mark } from "./marks";
+import "./game-screen.css";
 
 export default function Header() {
-  const links = [{ to: "/", label: "Home" }] as const;
-
   return (
-    <div>
-      <div className="flex flex-row items-center justify-between px-2 py-1">
-        <nav className="flex gap-4 text-lg">
-          {links.map(({ to, label }) => {
-            return (
-              <Link key={to} to={to}>
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="flex items-center gap-2">
-          <ModeToggle />
-        </div>
-      </div>
-      <hr />
-    </div>
+    <header className="game-header">
+      <Link to="/" className="game-brand" aria-label="Tic-Tac-Chor home">
+        <span className="game-brand__mark" aria-hidden="true">
+          <Mark glyph="X" className="game-brand__x" />
+          <Mark glyph="O" className="game-brand__o" />
+        </span>
+        <span className="game-brand__word">
+          Tic-Tac-<strong>Chor</strong>
+          <span className="game-brand__period">.</span>
+        </span>
+      </Link>
+      <Settings />
+    </header>
   );
 }

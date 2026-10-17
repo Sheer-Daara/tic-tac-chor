@@ -1,0 +1,29 @@
+{
+  "name": "@tic-tac-chor/game",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/react.ts",
+    "./presentation": "./src/presentation.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "test": "vp test run"
+  },
+  "dependencies": {
+    "@tic-tac-chor/assets": "workspace:*",
+    "@tic-tac-chor/design": "workspace:*"
+  },
+  "devDependencies": {
+    "@tic-tac-chor/config": "workspace:*",
+    "@types/react": "^19.2.18",
+    "typescript": "^6.0.3",
+    "vite-plus": "0.3.1"
+  },
+  "peerDependencies": {
+    "react": "^19.2.3"
+  }
+}

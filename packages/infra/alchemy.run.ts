@@ -7,7 +7,9 @@ export default Alchemy.Stack(
   "tic-tac-chor",
   {
     providers: Cloudflare.providers(),
-    state: Cloudflare.state(),
+    // `alchemy dev` serves the site locally, so keep its state on disk and
+    // avoid requiring Cloudflare credentials just to start the dev server.
+    state: process.env.ALCHEMY_DEV === "true" ? Alchemy.localState() : Cloudflare.state(),
   },
   Effect.gen(function* () {
     const webWorker = yield* Cloudflare.Website.Vite("web", {
