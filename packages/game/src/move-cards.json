@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Corners open more doors",
+    "description": "A corner mark belongs to three possible winning lines. A side square belongs to only two. Open wide.",
+    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  },
+  {
+    "title": "The centre is the busiest square",
+    "description": "The centre sits on four winning lines, more than any other square. Take it when you can.",
+    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  },
+  {
+    "title": "Forks are double trouble",
+    "description": "A fork threatens two wins at once. Your opponent can only block one of them."
+  },
+  {
+    "title": "A draw is a respectable result",
+    "description": "Against perfect play, tic-tac-toe is a draw. Nobody loses when both sides stay sharp.",
+    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  },
+  {
+    "title": "Block first, decorate later",
+    "description": "If Mudi has two in a row, the third square is not a suggestion. It is a warning."
+  },
+  {
+    "title": "Nine squares, 255,168 games",
+    "description": "That is how many ways a full board can play out. Most games are much shorter than you think.",
+    "link": "https://en.wikipedia.org/wiki/Game_tree"
+  },
+  {
+    "title": "X always moves first",
+    "description": "The opener is chosen at random, but X gets the first mark. Being X is a small head start.",
+    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  },
+  {
+    "title": "Mudi thinks in silences",
+    "description": "Every computer move arrives after a deliberate pause. The board is not lagging; it is plotting."
+  },
+  {
+    "title": "The anti-diagonal is a trap",
+    "description": "Squares 2, 4 and 8 form the quieter diagonal. Forks love it."
+  },
+  {
+    "title": "Perfect play has no winners",
+    "description": "Minimax searches every reply before choosing. That is why the best you can usually do is draw.",
+    "link": "https://en.wikipedia.org/wiki/Minimax"
+  },
+  {
+    "title": "Symmetry is a shortcut",
+    "description": "Many openings are reflections of each other. Rotate the board and you may recognise the pattern."
+  },
+  {
+    "title": "One square can change everything",
+    "description": "A single well-placed mark can turn a quiet board into a forced win.",
+    "link": "https://en.wikipedia.org/wiki/Game_tree"
+  },
+  {
+    "title": "Mudi's committee is still deliberating"
+  },
+  {
+    "title": "Read the original rulebook",
+    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  }
+]

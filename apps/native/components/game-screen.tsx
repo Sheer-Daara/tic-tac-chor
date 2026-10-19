@@ -14,6 +14,7 @@ import { StyleSheet, useUnistyles, withUnistyles } from "react-native-unistyles"
 
 import { BoardBackdrop } from "./board-backdrop";
 import { useGame } from "./game-provider";
+import { MoveCard } from "./move-card";
 import { PersistenceNotice } from "./persistence-notice";
 import { WinCelebration } from "./win-celebration";
 
@@ -130,126 +131,130 @@ export function GameScreen() {
   useRoundAnnouncement(snapshot);
 
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={styles.content}
-      style={styles.screen}
-    >
-      <View style={styles.page}>
-        <PersistenceNotice />
-        <View style={styles.opponent}>
-          <View style={styles.portraitFrame}>
-            <ThemedImage
-              source={nativeAssets.opponent.source}
-              contentFit="cover"
-              accessible={false}
-              style={styles.portrait}
-            />
-          </View>
-          <View style={styles.opponentMeta}>
-            <Text accessibilityRole="header" style={styles.opponentName}>
-              Nurundru Mudi
-            </Text>
-            <View style={styles.turn}>
-              <View style={styles.turnDot} />
-              <Text accessibilityLiveRegion="polite" selectable style={styles.turnLabel}>
-                {getTurnLabel(snapshot)}
+    <View style={styles.root}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={styles.content}
+        style={styles.screen}
+      >
+        <View style={styles.page}>
+          <PersistenceNotice />
+          <View style={styles.opponent}>
+            <View style={styles.portraitFrame}>
+              <ThemedImage
+                source={nativeAssets.opponent.source}
+                contentFit="cover"
+                accessible={false}
+                style={styles.portrait}
+              />
+            </View>
+            <View style={styles.opponentMeta}>
+              <Text accessibilityRole="header" style={styles.opponentName}>
+                Nurundru Mudi
               </Text>
-            </View>
-          </View>
-          {game !== null ? (
-            <View style={styles.players}>
-              <View style={styles.playerIdentity}>
-                <ThemedImage
-                  source={nativePlayerIcons.player}
-                  contentFit="contain"
-                  accessible={false}
-                  style={styles.playerIcon}
-                />
-                <Text style={styles.playerDescription}>You</Text>
-              </View>
-              <View style={styles.playerIdentity}>
-                <ThemedImage
-                  source={nativePlayerIcons.computer}
-                  contentFit="contain"
-                  accessible={false}
-                  style={styles.playerIcon}
-                />
-                <Text style={styles.playerDescription}>Mudi</Text>
-              </View>
-            </View>
-          ) : null}
-        </View>
-
-        <View style={styles.play}>
-          <View style={styles.boardWrap}>
-            {snapshot.status === "ready" ? (
-              <GameBoard snapshot={snapshot} />
-            ) : (
-              <View style={[styles.board, styles.loadingBoard]} accessible={false}>
-                <Text style={styles.loadingMarks} allowFontScaling={false}>
-                  × ○
+              <View style={styles.turn}>
+                <View style={styles.turnDot} />
+                <Text accessibilityLiveRegion="polite" selectable style={styles.turnLabel}>
+                  {getTurnLabel(snapshot)}
                 </Text>
               </View>
-            )}
-          </View>
-          {game !== null &&
-          game.outcome.type === "win" &&
-          game.outcome.winner === "computer" &&
-          celebration.kind !== null ? (
-            <WinCelebration
-              key={`${game.roundId}-${celebration.kind}`}
-              outcome={game.outcome}
-              occurrenceIndex={celebration.index}
-            />
-          ) : null}
-          <Text selectable accessibilityLiveRegion="polite" style={styles.taunt}>
-            {game?.latestTaunt ?? "A new board. A new masterplan."}
-          </Text>
-        </View>
-
-        <View style={styles.results}>
-          <View style={styles.scoreboard}>
-            {(
-              [
-                ["Wins", wins],
-                ["Losses", losses],
-                ["Draws", draws],
-              ] as const
-            ).map(([label, value]) => (
-              <View key={label} style={styles.score}>
-                <Text style={styles.scoreLabel}>{label}</Text>
-                <Text
-                  selectable
-                  accessibilityLabel={`${label}: ${value.toLocaleString()}`}
-                  style={styles.scoreValue}
-                >
-                  {value.toLocaleString()}
-                </Text>
+            </View>
+            {game !== null ? (
+              <View style={styles.players}>
+                <View style={styles.playerIdentity}>
+                  <ThemedImage
+                    source={nativePlayerIcons.player}
+                    contentFit="contain"
+                    accessible={false}
+                    style={styles.playerIcon}
+                  />
+                  <Text style={styles.playerDescription}>You</Text>
+                </View>
+                <View style={styles.playerIdentity}>
+                  <ThemedImage
+                    source={nativePlayerIcons.computer}
+                    contentFit="contain"
+                    accessible={false}
+                    style={styles.playerIcon}
+                  />
+                  <Text style={styles.playerDescription}>Mudi</Text>
+                </View>
               </View>
-            ))}
+            ) : null}
           </View>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityState={{ disabled: snapshot.status !== "ready" }}
-            disabled={snapshot.status !== "ready"}
-            onPress={controller.newGame}
-            style={({ pressed }) => [
-              styles.newGame,
-              (pressed || snapshot.status !== "ready") && styles.dimmed,
-            ]}
-          >
-            <Text style={styles.newGameLabel}>{completed ? "Play again" : "New game"}</Text>
-          </Pressable>
-        </View>
 
-        <Text style={styles.footer}>Just a game. All dialogue is authored satire.</Text>
-      </View>
-    </ScrollView>
+          <View style={styles.play}>
+            <View style={styles.boardWrap}>
+              {snapshot.status === "ready" ? (
+                <GameBoard snapshot={snapshot} />
+              ) : (
+                <View style={[styles.board, styles.loadingBoard]} accessible={false}>
+                  <Text style={styles.loadingMarks} allowFontScaling={false}>
+                    × ○
+                  </Text>
+                </View>
+              )}
+            </View>
+            {game !== null &&
+            game.outcome.type === "win" &&
+            game.outcome.winner === "computer" &&
+            celebration.kind !== null ? (
+              <WinCelebration
+                key={`${game.roundId}-${celebration.kind}`}
+                outcome={game.outcome}
+                occurrenceIndex={celebration.index}
+              />
+            ) : null}
+            <Text selectable accessibilityLiveRegion="polite" style={styles.taunt}>
+              {game?.latestTaunt ?? "A new board. A new masterplan."}
+            </Text>
+          </View>
+
+          <View style={styles.results}>
+            <View style={styles.scoreboard}>
+              {(
+                [
+                  ["Wins", wins],
+                  ["Losses", losses],
+                  ["Draws", draws],
+                ] as const
+              ).map(([label, value]) => (
+                <View key={label} style={styles.score}>
+                  <Text style={styles.scoreLabel}>{label}</Text>
+                  <Text
+                    selectable
+                    accessibilityLabel={`${label}: ${value.toLocaleString()}`}
+                    style={styles.scoreValue}
+                  >
+                    {value.toLocaleString()}
+                  </Text>
+                </View>
+              ))}
+            </View>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ disabled: snapshot.status !== "ready" }}
+              disabled={snapshot.status !== "ready"}
+              onPress={controller.newGame}
+              style={({ pressed }) => [
+                styles.newGame,
+                (pressed || snapshot.status !== "ready") && styles.dimmed,
+              ]}
+            >
+              <Text style={styles.newGameLabel}>{completed ? "Play again" : "New game"}</Text>
+            </Pressable>
+          </View>
+
+          <Text style={styles.footer}>Just a game. All dialogue is authored satire.</Text>
+        </View>
+      </ScrollView>
+      <MoveCard game={game} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create((theme, runtime) => ({
+  root: { flex: 1, backgroundColor: theme.colors.background },
   screen: { flex: 1, backgroundColor: theme.colors.background },
   content: {
     padding: theme.spacing.md,

@@ -2,7 +2,7 @@
 
 A mobile-first tic-tac-toe game for the web and Expo. Play against a Narendra Modi editorial caricature, with sample Hinglish banter and five minimal, mischievous Modi caricature backdrops that change with each new game. Dialogue is authored satire.
 
-The opener is chosen randomly and plays X. The computer uses legal minimax moves and thinks for about 1.2 seconds. New game abandons the current round without counting a result; completed rounds count once. Settings provides Light, Dark and System appearance plus confirmed statistics reset.
+The opener is chosen randomly and plays X. The computer uses legal minimax moves and thinks for about 1.2 seconds. New game abandons the current round without counting a result; completed rounds count once. Settings provides Light, Dark and System appearance plus confirmed statistics reset. A dismissible floating move note appears after each computer move.
 
 ## Development
 
@@ -55,7 +55,7 @@ The production web preview includes the service worker. After its offline-ready 
 
 ## Shared packages
 
-- `packages/game`: rules, exhaustive minimax opponent, taunts, carousel, validated snapshot and serialized controller. `/react` exports the React binding; `/presentation` exports shared turn text and descriptive board labels. Platform storage, timers and the optional move-cue player are injected.
+- `packages/game`: rules, exhaustive minimax opponent, taunts, carousel, move notes, validated snapshot and serialized controller. `/react` exports the React binding; `/presentation` exports shared turn text and descriptive board labels. Platform storage, timers and the optional move-cue player are injected.
 - `packages/design`: light/dark colors, geometry, typography and motion. Web CSS is generated from the same tokens consumed by native Unistyles.
 - `packages/assets`: artwork, procedurally generated move sounds and ordered metadata, with explicit Vite imports through `/web` and literal Metro references through `/native`.
 - `packages/ui`: shared web shadcn/Base UI primitives.
@@ -69,6 +69,22 @@ The apps use platform UI components with the same board/opponent/message/score c
 There are no accounts, database, cloud sync or individual game history. Each browser/device keeps aggregate wins/losses/draws, theme preference, move-sound preference and the last background position in one validated version-1 JSON snapshot.
 
 Web uses `localStorage` key `tic-tac-chor:snapshot:v1`. Native uses `tic-tac-chor/snapshot-v1.json` in Expo's private document directory, staging writes and retaining one valid backup. Reload/relaunch advances to a fresh round and keeps results/preferences. Reset statistics clears only totals. Invalid snapshots recover to defaults; storage failures show a Retry save notice while play continues. Clearing browser/app data removes local results; devices do not share data.
+
+## Move notes
+
+Every computer move shows a small floating note with a tic-tac-toe tip. On web it sits fixed at the bottom, does not reflow the page, passes pointer input through to whatever is underneath, and only captures its link and dismiss button. Native renders the same note as an absolute overlay above its scroll view. Both hide after 14 seconds, clear immediately when a new round starts, and share the move detection and card selection; each app supplies its own floating card. The web card also pauses its timer while keyboard focus is inside.
+
+The seeded content lives in [`packages/game/src/move-cards.json`](packages/game/src/move-cards.json) as an array of objects:
+
+```json
+{
+  "title": "Corners open more doors",
+  "description": "Optional copy.",
+  "link": "https://example.com"
+}
+```
+
+Only `title` is required. Blank optional fields are dropped, and links must be absolute HTTP(S) URLs. The JSON is exposed through an asynchronous `MoveCardRepository`, standing in for an external content feed; replace `createLocalMoveCardRepository()` or inject another repository into `useComputerMoveCard` when the real source exists. A random card is shown each time, skipping the immediately previous one, so the same note does not appear twice in a row. Notes are not persisted and do not count as gameplay state.
 
 ## Change personality and artwork
 
