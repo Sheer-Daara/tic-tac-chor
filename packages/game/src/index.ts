@@ -22,4 +22,13 @@ export {
 } from "./celebrations";
 export type { WinCelebrationConfig, WinCelebrationKind } from "./celebrations";
 export { getMoveTauntCategory, sampleTaunts, selectTaunt } from "./taunts";
+export {
+  countComputerMarks,
+  createLocalMoveCardRepository,
+  decodeMoveCards,
+  localMoveCardRepository,
+  localMoveCards,
+  selectMoveCard,
+} from "./move-cards";
+export type { MoveCard, MoveCardRepository, MoveCardSelection } from "./move-cards";
 export { decodeSnapshot, parseSnapshot, serializeSnapshot } from "./persistence";

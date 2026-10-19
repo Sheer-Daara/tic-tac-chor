@@ -14,6 +14,7 @@ import { getKeyboardCell } from "@/lib/game-view";
 import { BoardBackdrop } from "./board-backdrop";
 import { useGame } from "./game-provider";
 import { Mark } from "./marks";
+import { MoveCard } from "./move-card";
 import { WinCelebration } from "./win-celebration";
 import "./game-screen.css";
 
@@ -210,6 +211,7 @@ export function GameScreen() {
         </dl>
       </section>
       <footer className="game-footer">Just a game. All dialogue is authored satire.</footer>
+      <MoveCard game={game} />
     </main>
   );
 }

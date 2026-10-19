@@ -81,6 +81,33 @@ Invalid saved positions restart at zero. Moves never change the background.
 Change/reorder artwork in `@tic-tac-chor/assets`, keeping its platform registries
 in sync. Transition rendering belongs to the web/native screen components.
 
+## Move cards
+
+`src/move-cards.json` seeds the floating note shown after every computer move.
+Its array entries require a `title`; `description` and `link` are optional. Edit the
+JSON directly to change the copy. `decodeMoveCards(value)` treats the payload as
+untrusted: it trims strings, drops entries without a title or with duplicate titles,
+drops blank optional fields, and accepts only absolute HTTP(S) links. `localMoveCards`
+is the validated seed, and `createLocalMoveCardRepository(source)` wraps a payload
+in the asynchronous `MoveCardRepository` contract. Keep that contract when pointing
+at a real content API; the UI does not read the JSON directly.
+
+`selectMoveCard(cards, previousIndex, random)` chooses a random card while excluding
+the immediately previous index, and tolerates a stale/out-of-range previous index.
+`countComputerMarks(game)` counts the opponent's marks for either opener; because the
+cheat rule overwrites a player square with a computer mark, each successful computer
+move still increases the count, including the illegal win.
+
+`useComputerMoveCard(game, { repository?, random? })` from `@tic-tac-chor/game/react`
+loads the repository once, establishes a baseline when a round first appears, and
+returns `{ card, occurrence, dismiss }`. It shows at most one card for each newly
+added computer mark, waits for a slow repository rather than consuming a move before
+cards exist, dismisses old copy when the round changes, and swallows source failures
+because the note is supplementary. `occurrence` increments per shown card and is
+useful as an animation/key trigger. Web and native own the presentation: web renders
+a click-through aside, native an absolute overlay above its scroll view. Both hide
+after 14 seconds; the web card also pauses while focus is inside.
+
 ## Controller
 
 `createGameController({ storage, random, scheduler, engine? })` creates an external
