@@ -1,64 +1,77 @@
 [
   {
-    "title": "Corners open more doors",
-    "description": "A corner mark belongs to three possible winning lines. A side square belongs to only two. Open wide.",
-    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    "title": "Misquoting Manmohan Singh's Resource Speech",
+    "description": "During a 2024 election rally in Banswara, Rajasthan, Modi claimed that former PM Manmohan Singh stated Muslims have the 'first claim' on the country's resources. Fact-checkers noted that Singh's actual 2006 speech referred collectively to all marginalized and priority sectors, including SC/STs, OBCs, women, children, and minorities.",
+    "link": "https://www.boomlive.in/fact-check/factcheck-modi-rajasthan-speech-intruders-muslims-have-first-right-over-country-resources-manmohan-singh-fake-news-25010"
   },
   {
-    "title": "The centre is the busiest square",
-    "description": "The centre sits on four winning lines, more than any other square. Take it when you can.",
-    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    "title": "Attributing a Parody Quote to Omar Abdullah",
+    "description": "In a 2020 speech to the Lok Sabha, Modi targeted former Jammu & Kashmir CM Omar Abdullah by quoting him as saying the abrogation of Article 370 would cause an earthquake that splits Kashmir from India. An Alt News investigation revealed that the quote originated from a satirical article on the spoof website 'Faking News'.",
+    "link": "https://www.altnews.in/pm-modi-quotes-faking-news-in-parliament-to-target-former-jk-cm-omar-abdullah/"
   },
   {
-    "title": "Forks are double trouble",
-    "description": "A fork threatens two wins at once. Your opponent can only block one of them."
+    "title": "Claim Regarding Atal Bihari Vajpayee and the First Metro",
+    "description": "In December 2017, Modi stated that Atal Bihari Vajpayee became the first-ever passenger of the country's metro system on December 24, 2002. However, India's first metro line was inaugurated in Kolkata in 1984 under the tenure of Indira Gandhi, decades before the Delhi Metro opened.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "A draw is a respectable result",
-    "description": "Against perfect play, tic-tac-toe is a draw. Nobody loses when both sides stay sharp.",
-    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    "title": "Claim of Launching the Direct Benefit Transfer (DBT) Scheme",
+    "description": "Modi claimed in a 2017 public address that his government had conceptualized and launched the Direct Benefit Transfer (DBT) initiative. Official records verify that the DBT scheme was actually launched by the previous UPA government on January 1, 2013.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "Block first, decorate later",
-    "description": "If Mudi has two in a row, the third square is not a suggestion. It is a warning."
+    "title": "Claim of Uniform 100% Open Defecation Free (ODF) Status",
+    "description": "During an address to the Indian diaspora in Munich, Germany, Modi asserted that every village in India was completely open defecation free. Independent data from the National Family Health Survey (NFHS-5) contradicted this, reporting that open defecation practices remained prevalent in several rural parts of the country.",
+    "link": "https://www.altnews.in/fact-checking-prime-minister-modis-address-to-indian-diaspora-in-munich-germany/"
   },
   {
-    "title": "Nine squares, 255,168 games",
-    "description": "That is how many ways a full board can play out. Most games are much shorter than you think.",
-    "link": "https://en.wikipedia.org/wiki/Game_tree"
+    "title": "Misquoting Rahul Gandhi on 'Coconut Juice'",
+    "description": "In an election rally speech, Modi ridiculed Congress leader Rahul Gandhi by claiming Gandhi had spoken about extracting 'juice from coconuts' and exporting it to London. Fact-checks of the original speech footage showed Gandhi had actually referred to 'pineapple juice' and making potato chips.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "X always moves first",
-    "description": "The opener is chosen at random, but X gets the first mark. Being X is a small head start.",
-    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    "title": "Claim of 100% Household LPG Gas Connectivity Coverage",
+    "description": "Modi stated in an international address that over 99% of the Indian population had active gas connections. However, demographic surveys like the NFHS-5 noted that approximately 41% of rural households still relied on solid fuels for cooking rather than LPG.",
+    "link": "https://www.altnews.in/fact-checking-prime-minister-modis-address-to-indian-diaspora-in-munich-germany/"
   },
   {
-    "title": "Mudi thinks in silences",
-    "description": "Every computer move arrives after a deliberate pause. The board is not lagging; it is plotting."
+    "title": "Allegations Linking Pakistan to the Gujarat Assembly Elections",
+    "description": "During a 2017 election rally in Gujarat, Modi claimed that a secret meeting had taken place at Congress leader Mani Shankar Aiyar’s house featuring Pakistani officials trying to influence the state elections. Participants of the meeting, including senior Indian diplomats and former PM Manmohan Singh, confirmed it was a routine dinner discussing bilateral relations.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "The anti-diagonal is a trap",
-    "description": "Squares 2, 4 and 8 form the quieter diagonal. Forks love it."
+    "title": "Claim That Weather-Based Crop Insurance Was New",
+    "description": "Modi claimed in a public forum that his administration had introduced a completely new weather-based crop insurance policy for farmers. Records indicate that the Weather Based Crop Insurance Scheme (WBCIS) had been piloted and operational since 2003.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "Perfect play has no winners",
-    "description": "Minimax searches every reply before choosing. That is why the best you can usually do is draw.",
-    "link": "https://en.wikipedia.org/wiki/Minimax"
+    "title": "Claim of Disproportionate Power Supply During Diwali vs. Eid",
+    "description": "During a 2017 Uttar Pradesh assembly election rally, Modi asserted that previous state governments supplied more electricity during Eid than during Diwali. Fact-checks analyzing official power grid data from the Uttar Pradesh Power Corporation showed that the power supply was actually higher during Diwali.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "Symmetry is a shortcut",
-    "description": "Many openings are reflections of each other. Rotate the board and you may recognise the pattern."
+    "title": "Claim Linking Kanpur Train Derailment to Cross-Border Sabotage",
+    "description": "In an election speech in 2017, Modi stated that the tragic Kanpur train derailment was a conspiracy masterminded by handlers sitting across the border in Pakistan. Subsequent investigations by the National Investigation Agency (NIA) and local police failed to find any evidence supporting a cross-border sabotage theory, attributing it to track fractures.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "One square can change everything",
-    "description": "A single well-placed mark can turn a quiet board into a forced win.",
-    "link": "https://en.wikipedia.org/wiki/Game_tree"
+    "title": "Mischaracterization of Mani Shankar Aiyar's 'Mughal' Remark",
+    "description": "Modi claimed in a rally that Mani Shankar Aiyar had compared the internal democracy of the Congress party to the dynastic succession of Mughal rulers. Verification of the footage showed Aiyar was explicitly making a contrast, arguing that Congress elections were democratic unlike the automatic succession of the Mughals.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   },
   {
-    "title": "Mudi's committee is still deliberating"
+    "title": "Claim on the National Detention Centers and NRC",
+    "description": "During a rally at Ramlila Maidan in December 2019, Modi stated that there were no detention centers operating anywhere in India and that the National Register of Citizens (NRC) had never been discussed by his cabinet. Critics and journalists quickly pointed out that detention centers were already documented as functional in Assam, and multiple statements from his own Home Minister in Parliament contradicted the claim regarding NRC discussions.",
+    "link": "https://www.altnews.in/pm-modis-speech-on-caa-nrc-a-combination-of-falsehoods-and-half-truths/"
   },
   {
-    "title": "Read the original rulebook",
-    "link": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    "title": "Denial of Using Minority Rhetoric in Speeches",
+    "description": "In a 2024 television interview, Modi asserted that he has never engaged in Hindu-Muslim political rhetoric or targeted minorities in his public addresses. Fact-checkers compiled dozens of archival speech transcripts from the 2024 campaign trail demonstrating direct rhetorical references to communities.",
+    "link": "https://www.altnews.in/did-modi-target-muslims-fact-checking-pms-remarks-in-news-18-interview/"
+  },
+  {
+    "title": "Claim of Uttar Pradesh Ranking First in Crime Rate Data",
+    "description": "In a comparative development speech, Modi used statistics to assert that Uttar Pradesh had the worst overall crime rate metrics in India. National Crime Records Bureau (NCRB) data refuted this, demonstrating that on a per-capita basis, over 10 other Indian states held higher crime rates.",
+    "link": "https://www.altnews.in/half-truths-whole-lies-ten-times-pm-modi-misled-nation-2017/"
   }
 ]
