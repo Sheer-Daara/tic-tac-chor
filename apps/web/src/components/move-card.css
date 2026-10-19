@@ -124,3 +124,11 @@
     transform: none;
   }
 }
+
+/* Phones center the note so it reads as a floating card rather than a toast
+   pinned to one side. Wider layouts keep it in the free space at the right. */
+@media (max-width: 30rem) {
+  .move-card-layer {
+    justify-content: center;
+  }
+}
