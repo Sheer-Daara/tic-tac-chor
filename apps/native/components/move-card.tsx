@@ -70,7 +70,7 @@ export function MoveCard({ game }: { readonly game: GameState | null }) {
         ]}
       >
         <Text maxFontSizeMultiplier={1.6} style={styles.eyebrow}>
-          MOVE NOTE
+          ANOTHER MUDI LIE
         </Text>
         <Text
           accessibilityLiveRegion="polite"

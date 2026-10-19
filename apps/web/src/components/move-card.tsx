@@ -48,7 +48,7 @@ export function MoveCard({ game }: { readonly game: GameState | null }) {
         <aside key={occurrence} className="move-card" aria-label="Computer move note">
           <p className="move-card__eyebrow">
             <Sparkles aria-hidden="true" />
-            Move note
+            Another Mudi Lie
           </p>
           <h2 className="move-card__title">{card.title}</h2>
           {card.description === undefined ? null : (
