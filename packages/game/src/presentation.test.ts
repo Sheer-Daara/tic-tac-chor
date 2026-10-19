@@ -28,7 +28,7 @@ describe("accessible board descriptions", () => {
         0,
         true,
       ),
-    ).toBe("Row 1, column 1: Nurundru Mudi's X.");
+    ).toBe("Row 1, column 1: Mudi's X.");
     expect(getCellLabel({ ...round, playerMark: "O" }, 8, true)).toBe(
       "Row 3, column 3: empty. Place your O.",
     );

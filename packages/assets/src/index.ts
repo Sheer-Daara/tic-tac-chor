@@ -24,11 +24,23 @@ export const opponentMetadata: AssetMetadata = {
 
 /** Change this order to change the shared carousel sequence. */
 export const backgroundMetadata = [
-  { id: "knowing-smirk", label: "Knowing Smirk", description: "A raised eyebrow and a knowing sideways smirk." },
+  {
+    id: "knowing-smirk",
+    label: "Knowing Smirk",
+    description: "A raised eyebrow and a knowing sideways smirk.",
+  },
   { id: "playful-wink", label: "Playful Wink", description: "A playful wink and lopsided grin." },
   { id: "side-eye", label: "Side Eye", description: "A sly sideways glance and tiny smile." },
-  { id: "secret-grin", label: "Secret Grin", description: "A cheeky grin with eyes looking upward." },
-  { id: "scheming-chin", label: "Scheming Chin", description: "A conspiratorial smile with one hand at the chin." },
+  {
+    id: "secret-grin",
+    label: "Secret Grin",
+    description: "A cheeky grin with eyes looking upward.",
+  },
+  {
+    id: "scheming-chin",
+    label: "Scheming Chin",
+    description: "A conspiratorial smile with one hand at the chin.",
+  },
 ] as const satisfies readonly AssetMetadata[];
 
 export const BACKGROUND_COUNT = backgroundMetadata.length;

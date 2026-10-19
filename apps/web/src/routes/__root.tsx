@@ -29,8 +29,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
       },
       {
         name: "description",
-        content:
-          "Can you beat the non-biological tic-tac-chor?",
+        content: "Can you beat the non-biological tic-tac-chor?",
       },
     ],
     links: [

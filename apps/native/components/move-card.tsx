@@ -121,7 +121,7 @@ const styles = StyleSheet.create((theme, runtime) => ({
     right: runtime.insets.right + theme.spacing.sm,
     bottom: runtime.insets.bottom + theme.spacing.sm,
     left: runtime.insets.left + theme.spacing.sm,
-    alignItems: "flex-end",
+    alignItems: "center",
   },
   card: {
     width: "100%",
